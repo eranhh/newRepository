@@ -1,16 +1,13 @@
 * {
     box-sizing: border-box;
-}
-
-body {
-    background-color: sandybrown;
-    margin: 0;
     text-align: center;
 }
 
-.covered-cell {
-    color: sienna;
-    background-color: sienna;
+body {
+    background-color: #b35c00;
+    background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+    margin-left: 18px;
+    margin-right: 18px;
 }
 
 .board {
@@ -18,20 +15,137 @@ body {
     margin-left: auto;
     margin-right: auto;
     background-color: lightgrey;
+    border-radius: 2px;
 }
 
 .board td {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     text-align: center;
     font-weight: bold;
 }
 
 .hidden {
-    background-color: darkgray;
+    background-color: rgb(155, 155, 155);
     text-indent: -9999px;
 }
 
 .marked {
-    background-color: rgb(19, 169, 169);
+    background-color: rgb(155, 155, 155);
+}
+
+.board:hover {
+    cursor: pointer;
+}
+
+.hard-btn {
+    background-color: lightyellow;
+    border-radius: 8px;
+}
+
+.medium-btn {
+    background-color: lightyellow;
+    border-radius: 8px;
+}
+
+.easy-btn {
+    background-color: rgba(224, 159, 6, 0.979);
+    border-radius: 8px;
+}
+
+.customize {
+    background-color: lightyellow;
+    border-radius: 8px;
+}
+
+.game-status {
+    font-size: 21px;
+    font-weight: bold;
+    background-color: lightgray;
+    height: 80px;
+    width: 180px;
+    border-radius: 18px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.game-update {
+    font-size: 12px;
+    margin-bottom: 0.5px;
+    margin-top: 0px;
+}
+
+.lives-modal {
+    color: darkred;
+    margin-left: auto;
+    margin-right: auto;
+    width: 240px;
+    height: 80px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: sandybrown;
+    display: none;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: burlywood solid 2px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+}
+
+.modal-timer {
+    background-color: rgba(224, 159, 6, 0.979);
+    font-size: 15px;
+    display: block;
+    padding: 1px;
+    width: 80px;
+    height: 60px;
+    border-radius: 10px;
+    border: solid 2px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.lives {
+    background-color: rgba(224, 159, 6, 0.979);
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    padding-top: 4px;
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    border: solid 2px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.flags {
+    background-color: rgba(224, 159, 6, 0.979);
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    padding-top: 4px;
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    border: solid 2px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.safe-clicks {
+    background-color: lightyellow;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 120px;
+    padding: 2px;
+    font-size: 16px;
+}
+
+.safe-clicks:active {
+    background-color: goldenrod;
+    transition-timing-function: 2s;
 }
