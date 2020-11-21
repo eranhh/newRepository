@@ -5,12 +5,13 @@ const MINE = '&#128163;';
 const FLAG = '&#128681;';
 const EMPTY = '';
 
+
 //  smilies : 128546	128553 128526	128515 //
 
 var gBoard
 var gLevel = {
-    size: 4,
-    mines: 2
+    size: 8,
+    mines: 12
 }
 var gGame = {
     isOn: false,
@@ -18,8 +19,9 @@ var gGame = {
     markedCount: 0,
     secsPassed: 0
 }
-
-var gMineCounter = 0;
+var gLives = 3
+var gIsFirstClick = true;
+var gCellsShownCount = 0;
 
 function init() {
     gBoard = buildBoard();
@@ -44,8 +46,7 @@ function buildBoard() {
         }
 
     }
-    board[1][3].isMine = true
-    board[2][2].isMine = true
+
     setMinesNegsCount(board)
 
     return board;
@@ -58,18 +59,24 @@ function renderBoard(board) {
         for (var j = 0; j < board[0].length; j++) {
             var currCell = board[i][j];
             var cellHTML = currCell.minesAroundCount
+            var className = `cell-${i}-${j}`;
             if (currCell.minesAroundCount === 0) cellHTML = EMPTY
             if (currCell.isMine === true) cellHTML = MINE
-            var className = `cell-${i}-${j}`;
-
-            className += ' hide'
-            strHTML += `<td data-i="${i}" data-j="${j}" class=" board ${className}" onclick = "cellClicked(this,${i},${j})">${cellHTML}</td>`
+            if (currCell.isMarked === true) {
+                cellHTML = FLAG;
+                className += 'marked'
+            }
+            if (currCell.isShown === false) {
+                className += ` hidden`
+            }
+            strHTML += `<td data-i="${i}" data-j="${j}" class=" board ${className}" onclick = "cellClicked(this,${i},${j})" oncontextmenu="cellMarked(this,${i},${j}); return false;">${cellHTML}</td>`
         }
     }
     strHTML += '</tbody></table>';
     var elBoard = document.querySelector('.board');
     console.log('elBoard',  elBoard)
     elBoard.innerHTML = strHTML;
+
 }
 
 
@@ -101,21 +108,40 @@ function countMinesAround(mat, rowIdx, colIdx) {
 }
 
 
-function generalMinesCounter(gBoard) {
-
+function cellMarked(elCell, i, j) {
+    var cell = gBoard[i][j]
+    cell.isMarked = true
+    elCell.classList.remove('.hidden')
+    console.log('elCell',  elCell)
 }
-
 
 function cellClicked(elCell, i, j) {
-    randMines(i, j, gLevel)
-    setMinesNegsCount(gBoard)
-    renderBoard(gBoard)
+    var cell = gBoard[i][j]
+    if (gIsFirstClick) {
+        randMines(i, j, gLevel)
+        setMinesNegsCount(gBoard)
+        renderBoard(gBoard)
+        gIsFirstClick = false;
+    }
+    if (cell.isMarked === true) {
+        elCell.classList.remove('.hidden')
+        renderBoard(gBoard)
+
+    } else {
+        cell.isShown = true
+        renderBoard(gBoard)
+        gCellsShownCount++
+    }
+
     console.log('elCell', elCell, i, j)
+
+    if (cell.isMine === true) {
+        console.log('mine')
+    }
+
 }
 
-function cellMarked(elCell) {
 
-}
 
 function checkGameOver() {
 
