@@ -9,7 +9,7 @@ const MINE_EXPLODED = '&#128165;';
 
 var gBoard
 var gLevel = {
-    size: 4,
+    size: 5,
     mines: 3
 }
 var gGame = {
@@ -31,7 +31,7 @@ function init() {
     gGame.markedCount = gLevel.mines;
     elFlags.innerHTML = `${FLAG} = ${gGame.markedCount}`;
     elLives.innerHTML = ` &#128150; = ${gLives}`
-    elGameStatusEmoji.innerHTML = '<p class = "game-update"> Game On! <br> Click to restart </p> &#128515; '
+    elGameStatusEmoji.innerHTML = '<p class = "game-update"> Game On! <br> click to restart </p> &#128515; '
     elSafeClicks.innerHTML = `Safe Clicks: ${gSafeClicks}`
     reset()
     gBoard = buildBoard();
@@ -114,8 +114,8 @@ function countMinesAround(mat, rowIdx, colIdx) {
 
 function cellMarked(elCell, i, j) {
     if (gGame.isOn === false) return
-
     var cell = gBoard[i][j]
+    if (cell.isShown === true) return
     if (cell.isMarked === false) {
         if (gGame.markedCount <= 0) return
         cell.isMarked = true

@@ -41,21 +41,25 @@ body {
 .hard-btn {
     background-color: lightyellow;
     border-radius: 8px;
+    font-weight: bold;
 }
 
 .medium-btn {
     background-color: lightyellow;
     border-radius: 8px;
+    font-weight: bold;
 }
 
 .easy-btn {
-    background-color: rgba(224, 159, 6, 0.979);
+    background-color: orange;
     border-radius: 8px;
+    font-weight: bold;
 }
 
 .customize {
     background-color: lightyellow;
     border-radius: 8px;
+    font-weight: bold;
 }
 
 .game-status {
@@ -146,6 +150,6 @@ body {
 }
 
 .safe-clicks:active {
-    background-color: goldenrod;
+    background-color: orange;
     transition-timing-function: 2s;
 }

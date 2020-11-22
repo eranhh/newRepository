@@ -18,11 +18,11 @@ function playAgain() {
 }
 
 function playEasy() {
-    elEasyBtn.style.backgroundColor = ' rgba(224, 159, 6, 0.979)';
+    elEasyBtn.style.backgroundColor = 'orange';
     elMediumBtn.style.backgroundColor = 'lightyellow';
     elHardBtn.style.backgroundColor = 'lightyellow';
     elCusBtn.style.backgroundColor = 'lightyellow';
-    gLevel.size = 4
+    gLevel.size = 5
     gLevel.mines = 3
     init()
 
@@ -30,7 +30,7 @@ function playEasy() {
 
 function playMedium() {
     elEasyBtn.style.backgroundColor = 'lightyellow';
-    elMediumBtn.style.backgroundColor = ' rgba(224, 159, 6, 0.979)';
+    elMediumBtn.style.backgroundColor = 'orange';
     elHardBtn.style.backgroundColor = 'lightyellow';
     elCusBtn.style.backgroundColor = 'lightyellow';
     gLevel.size = 8
@@ -41,7 +41,7 @@ function playMedium() {
 function playHard() {
     elEasyBtn.style.backgroundColor = 'lightyellow';
     elMediumBtn.style.backgroundColor = 'lightyellow';
-    elHardBtn.style.backgroundColor = ' rgba(224, 159, 6, 0.979)';
+    elHardBtn.style.backgroundColor = 'orange';
     elCusBtn.style.backgroundColor = 'lightyellow';
     gLevel.size = 12
     gLevel.mines = 30
@@ -53,13 +53,13 @@ function customizeLevel() {
     elMediumBtn.style.backgroundColor = 'lightyellow';
     elHardBtn.style.backgroundColor = 'lightyellow';
     elCusBtn.style.backgroundColor = 'orange';
-    gLevel.size = +prompt('please enter number from 5 to 15')
+    gLevel.size = +prompt('Please enter a number between 5 and 15')
     while (gLevel.size > 15 || gLevel.size < 5) {
-        gLevel.size = +prompt('invalid number, please try again! Enter number from 5 to 15')
+        gLevel.size = +prompt('Invalid number, please try again! Enter a number between 5 and 15')
     }
-    gLevel.mines = +prompt('please enter how many mines you want, minimum 3!')
+    gLevel.mines = +prompt('Please enter the number of mines you want, minimum is 3!')
     while (gLevel.mines < 3) {
-        gLevel.mines = +prompt('invalid number, please try again! enter how many mines you want, minimum 3')
+        gLevel.mines = +prompt('Invalid number, please try again! Enter the number of mines you want, minimum is 3!')
     }
     init()
 }
