@@ -72,12 +72,12 @@ function showSafeClick() {
     var j = getRandomInt(0, gBoard.length);
     if (gBoard[i][j].isMine === false && gBoard[i][j].isShown === false && gBoard[i][j].isMarked === false) {
         console.log('gBoard[i][j]',  gBoard[i][j])
-        gBoard[i][j].isShown = true;
+        gBoard[i][j].isSafe = true;
         renderBoard(gBoard)
         gSafeClicks--;
         elSafeClicks.innerHTML = `Safe Clicks: ${gSafeClicks}`
         setTimeout(function() {
-            gBoard[i][j].isShown = false
+            gBoard[i][j].isSafe = false
             renderBoard(gBoard)
         }, 3000);
 

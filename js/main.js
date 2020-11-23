@@ -50,7 +50,8 @@ function buildBoard() {
                 isShown: false,
                 isMine: false,
                 isMarked: false,
-                isOver: false
+                isOver: false,
+                isSafe: false
             }
             board[i][j] = cell;
         }
@@ -68,10 +69,11 @@ function renderBoard(board) {
             var currCell = board[i][j];
             var cellHTML = currCell.minesAroundCount
             var className = `cell-${i}-${j}`;
+            if (currCell.isSafe) className = `cell-${i}-${j} safe-cell`
             if (currCell.minesAroundCount === 0) cellHTML = ''
-            if (currCell.isOver === false && currCell.isMine === true) cellHTML = MINE;
-            if (currCell.isOver === true) cellHTML = MINE_EXPLODED;
-            if (currCell.isMarked === false && currCell.isShown === false) {
+            if (!currCell.isOver && currCell.isMine) cellHTML = MINE;
+            if (currCell.isOver) cellHTML = MINE_EXPLODED;
+            if (!currCell.isMarked && !currCell.isShown && !currCell.isSafe) {
                 className = ` cell-${i}-${j} hidden`
             } else if (currCell.isMarked === true) {
                 cellHTML = FLAG;
@@ -114,6 +116,7 @@ function countMinesAround(mat, rowIdx, colIdx) {
 
 function cellMarked(elCell, i, j) {
     if (gGame.isOn === false) return
+    if (!gIsFirstClick) return
     var cell = gBoard[i][j]
     if (cell.isShown === true) return
     if (cell.isMarked === false) {
